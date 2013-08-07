@@ -1,0 +1,16 @@
+ =0=
+
+ - to make ready space of programming environment
+
+   - git, cmake CMakeList.txt, main.cpp for test simple program
+ 
+ - to write some client server program with socket API for our expirence
+   those programs must be written by our hands with simple unix socket API
+   then We attempt to write some example with boost.asio API
+
+ - design simple langage for protocol connection
+
+ =1=
+
+ The first our aim is client server connection
+
