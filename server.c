@@ -24,13 +24,13 @@ int main(int argc, char *argv[])
         printf("error: create listen socket \n");
     }
 
-	struct sockaddr_in addr;
+    struct sockaddr_in addr;
 
-	bzero ((void *)&addr, sizeof (addr));
+    bzero ((void *)&addr, sizeof (addr));
 
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons (9090);
-	addr.sin_addr.s_addr = htonl (INADDR_ANY);
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons (9090);
+    addr.sin_addr.s_addr = htonl (INADDR_ANY);
 
     /* set addr for socket */
     if ( bind(serv_sock, (struct sockaddr *)&addr, sizeof(addr) ) == -1)
@@ -48,44 +48,44 @@ int main(int argc, char *argv[])
         close(serv_sock);
     }
 
-	while (1)
-	{
-		struct sockaddr_in addr;
+    while (1)
+    {
+        struct sockaddr_in addr;
 
-		socklen_t n = sizeof(addr);
+        socklen_t n = sizeof(addr);
 
-		int sock = accept(serv_sock, (struct sockaddr *)&addr, &n);
-	
-		if ( sock == -1 )
-		{
-			printf("error: accept socket \n");
-		
-			continue;
-		}
+        int sock = accept(serv_sock, (struct sockaddr *)&addr, &n);
 
-		printf("-> connection accept -- ok \n");
+        if ( sock == -1 )
+        {
+            printf("error: accept socket \n");
 
-		char data[255];
+            continue;
+        }
 
-		while (recv(sock, data, 255, 0) != 0)
-		{
-			memset(data, '-', 255);
-			
-			data[0] = 'x';
-			data[2] = 'x';
-			data[7] = 'x';
-			data[9] = 'x';
-			
-			data[10] = 0;
+        printf("-> connection accept -- ok \n");
 
-			send(sock, data, 255, 0);
-		}
+        char data[255];
 
-		close(sock);
-	}
+        while (recv(sock, data, 255, 0) != 0)
+        {
+            memset(data, '-', 255);
 
-	close(serv_sock);
+            data[0] = 'x';
+            data[2] = 'x';
+            data[7] = 'x';
+            data[9] = 'x';
 
-	return 0;
+            data[10] = 0;
+
+            send(sock, data, 255, 0);
+        }
+
+        close(sock);
+    }
+
+    close(serv_sock);
+
+    return 0;
 }
 

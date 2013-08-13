@@ -11,8 +11,8 @@
 
 int main(int argc, char *argv[])
 {
-	printf("mchat:> hi <: \n");
-	
-	return 0;
+    printf("mchat:> hi <: \n");
+
+    return 0;
 }
 
