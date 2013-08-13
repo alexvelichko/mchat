@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
                 }
 
                     printf("serv [ %s ]\n", data);
-                }
+            }
         }
     }
 
